@@ -1,21 +1,22 @@
 import "@/styles/globals.css";
 import Navbar from "@/components/Navbar";
 import CartProvider from "@/context/CartContext";
-import {ThemeProvider} from "@mui/material/styles";
+import AuthProvider from "@/context/AuthContext";
+
+import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import theme from "@/theme/theme";
-import '@/styles/globals.css';
 
 export default function App({ Component, pageProps }) {
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-    <>
+    <AuthProvider>
       <CartProvider>
-        <Navbar />
-        <Component {...pageProps} />
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <Navbar />
+          <Component {...pageProps} />
+        </ThemeProvider>
       </CartProvider>
-    </>
-    </ThemeProvider>
+    </AuthProvider>
   );
 }
