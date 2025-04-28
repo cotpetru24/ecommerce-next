@@ -1,5 +1,6 @@
 import { Container, Typography, Box, TextField, Button } from "@mui/material";
 import Link from "next/link";
+import { useState } from "react";
 
 const Auth = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -69,7 +70,7 @@ const Auth = () => {
               </Link>
             </Box>
 
-            <Button type="submit" variant="contained" fullWidth>
+            <Button type="submit" variant="contained" fullWidth onClick={()=>handleLogin}>
               Login
             </Button>
 
@@ -87,7 +88,6 @@ const Auth = () => {
               <Link
                 href="#"
                 passHref
-                legacyBehavior
                 onClick={() => setIsLogin(false)}
               >
                 <Typography
@@ -129,7 +129,7 @@ const Auth = () => {
               autoComplete="current-password"
             />
 
-            <Button type="submit" variant="contained" fullWidth>
+            <Button type="submit" variant="contained" fullWidth onClick={()=>handleRegister}>
               Sign Up
             </Button>
 
@@ -147,7 +147,6 @@ const Auth = () => {
               <Link
                 href="#"
                 passHref
-                legacyBehavior
                 onClick={() => setIsLogin(true)}
               >
                 <Typography
