@@ -31,6 +31,8 @@ const ProductCard = ({ product }) => {
         </Typography>
       </CardContent>
       <CardActions>
+      <Button size="small" variant="contained" fullWidth onClick={() => { cart.addToCart(product); setOpen(true) }}>View Product</Button>
+
         <Button size="small" variant="contained" fullWidth onClick={() => { cart.addToCart(product); setOpen(true) }}>+Add to Cart</Button>
         <Snackbar
           anchorOrigin={{ vertical: 'top', horizontal: 'right' }}

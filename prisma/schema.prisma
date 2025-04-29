@@ -34,4 +34,5 @@ model Product {
   stock        Int
   brand       String
   model       String
+  size        String
 }
