@@ -5,7 +5,7 @@ import {
 } from "@/services/authService";
 import jwt from "jsonwebtoken";
 
-const registerUser = async (req, res) => {
+const registerUserController = async (req, res) => {
   const { email, password } = req.body;
 
   if (!email || !password) {
@@ -34,7 +34,7 @@ const registerUser = async (req, res) => {
 
 
 
-const loginUser = async (req, res) => {
+const loginUserController = async (req, res) => {
   const { email, password } = req.body;
   if (!email || !password) {
     return res.status(400).json({ message: "Email and password required" });
@@ -51,7 +51,7 @@ const loginUser = async (req, res) => {
     return res.status(400).json({ message: "Incorrect password" });
   }
 
-  const token = jwt.sign({id : existingUser.id}, process.env.JWT_SECRET, {
+  const token = jwt.sign({id : existingUser.id, role: existingUser.admin}, process.env.JWT_SECRET, {
     expiresIn: "1h",
   });
 

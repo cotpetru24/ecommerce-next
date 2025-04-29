@@ -20,4 +20,18 @@ model User {
   password  String
   isAdmin   Boolean  @default(false)
   createdAt DateTime @default(now())
+  admin      Boolean
+}
+
+model Product {
+  id          Int      @id @default(autoincrement())
+  name        String
+  description String
+  price       Float
+  imageUrl    String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  stock        Int
+  brand       String
+  model       String
 }
