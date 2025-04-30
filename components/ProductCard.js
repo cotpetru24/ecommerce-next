@@ -1,18 +1,30 @@
 import React, { useState } from "react";
-import { Card, CardMedia, CardContent, CardActions, Button, Typography } from "@mui/material";
+import {
+  Card,
+  CardMedia,
+  CardContent,
+  CardActions,
+  Button,
+  Typography,
+} from "@mui/material";
 import Link from "next/link";
 import Cart from "@/pages/cart";
 import { useCart } from "@/context/CartContext";
 import Snackbar from "@mui/material/Snackbar";
 
-
 const ProductCard = ({ product }) => {
-
   const [open, setOpen] = useState(false);
 
   const cart = useCart();
   return (
-    <Card sx={{ maxWidth: 345, height: '100%', display: 'flex', flexDirection: 'column' }}>
+    <Card
+      sx={{
+        maxWidth: 345,
+        height: "100%",
+        display: "flex",
+        flexDirection: "column",
+      }}
+    >
       <CardMedia
         component="img"
         height="200"
@@ -31,9 +43,33 @@ const ProductCard = ({ product }) => {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small" variant="contained" fullWidth onClick={() => { cart.addToCart(product); setOpen(true) }}>+Add to Cart</Button>
+        <Link href={`/product/${product.id}`} passHref>
+          <Button
+            size="small"
+            variant="contained"
+            fullWidth
+            onClick={() => {
+              cart.addToCart(product);
+              setOpen(true);
+            }}
+          >
+            View Product
+          </Button>
+        </Link>
+
+        <Button
+          size="small"
+          variant="contained"
+          fullWidth
+          onClick={() => {
+            cart.addToCart(product);
+            setOpen(true);
+          }}
+        >
+          +Add to Cart
+        </Button>
         <Snackbar
-          anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+          anchorOrigin={{ vertical: "top", horizontal: "right" }}
           open={open}
           autoHideDuration={400}
           onClose={() => setOpen(false)}

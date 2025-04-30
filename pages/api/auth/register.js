@@ -1,4 +1,4 @@
-import { registerUser } from "@/controllers/authController";
+import { registerUserController } from "@/controllers/authController";
 
 const handler= async(req, res)=> {
   if (req.method === "POST") {
