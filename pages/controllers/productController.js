@@ -14,9 +14,8 @@ const createProductController = async (req, res) => {
     }
 }
 
-const getProductByIdController = async (req, res) => {
+const getProductByIdController = async (req, res, id) => {
     try {
-        const { id } = req.query;
         const product = await getProductById(id);
         if (!product) {
             return res.status(404).json({ message: "Product not found" });
@@ -26,7 +25,8 @@ const getProductByIdController = async (req, res) => {
         console.error("Error fetching product:", error);
         res.status(500).json({ message: "Failed to fetch product" });
     }
-}
+};
+
 
 const getAllProductsController = async (req, res) => {
     try {
@@ -38,11 +38,10 @@ const getAllProductsController = async (req, res) => {
     }
 }
 
-const updateProductController = async (req, res) => {
+const updateProductController = async (req, res, id) => {
     try {
-         verifyAdmin(req);
+        verifyAdmin(req);
 
-        const { id } = req.query;
         const productData = req.body;
         const updatedProduct = await updateProduct(id, productData);
         res.status(200).json(updatedProduct);
@@ -50,19 +49,20 @@ const updateProductController = async (req, res) => {
         console.error("Error updating product:", error);
         res.status(500).json({ message: "Failed to update product" });
     }
-}
+};
 
-const deleteProductController = async (req, res) => {
+
+const deleteProductController = async (req, res, id) => {
     try {
         verifyAdmin(req);
 
-        const { id } = req.query;
         await deleteProduct(id);
         res.status(204).json({ message: "Product deleted successfully" });
     } catch (error) {
         console.error("Error deleting product:", error);
         res.status(500).json({ message: "Failed to delete product" });
     }
-}
+};
+
 
 export { createProductController, getProductByIdController, getAllProductsController, updateProductController, deleteProductController };

@@ -1,11 +1,31 @@
 import React from "react";
+import {useRouter} from "next/router";
 import { Container, Typography, Grid, Button, Box, Select, MenuItem, InputLabel } from "@mui/material";
 import { useCart } from "@/context/CartContext";
 
+import {useEffect, useState} from "react";
+
 const Product = (product) => {
+
+  const {query} = useRouter();
+
+  const {id} = query;
+
+  const [product, setProduct] = useState(null);
+
   const cart = useCart();
 
   const [open, setOpen] = useState(false);
+
+useEffect(()=>{
+if(id){
+  fetch(`/api/products/${id}`)
+  .then((res)=>res.json())
+  .then((data)=>setProduct(data))
+}
+}, [id])
+
+if (!product) return <Typography>Loading...</Typography>;
 
   return (
     <Container>
