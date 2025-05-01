@@ -27,7 +27,7 @@ const createProduct = async (productData)=> {
 const getProductById = async (productId) => {
     try {
         return await prisma.product.findUnique({
-            where: { id: productId },
+            where: { id: Number(productId) },
         });
     } catch (error) {
         console.error("Error fetching product:", error);
