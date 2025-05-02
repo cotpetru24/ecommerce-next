@@ -1,9 +1,26 @@
-import { Container, Typography, Box, TextField, Button } from "@mui/material";
+import { Container, Typography, Box, TextField, Button, Snackbar, Alert } from "@mui/material";
 import Link from "next/link";
 import { useState } from "react";
+import axios from "axios";
+
 
 const Auth = () => {
   const [isLogin, setIsLogin] = useState(true);
+  const [open, setOpen] = useState(false);
+
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+    passwordConfirm: "",
+  });
+
+  const hadleOnChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.id]: e.target.value,
+    });
+  };
+
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -11,13 +28,31 @@ const Auth = () => {
     console.log("Login submitted");
   };
 
-  const handleRegister = (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
-    //chek if password is same as confirm password
-    // Add register logic here later
-    console.log("Register submitted");
+    
+    if (formData.password !== formData.passwordConfirm) {
+      setOpen(true);
+      return;
+    }
+  
+    try {
+      const response = await axios.post("/api/auth/register", {
+        email: formData.email,
+        password: formData.password,
+      });
+  
+      console.log("Registered successfully!", response.data);
+      localStorage.setItem("token", response.data.token);
+  
+      setIsLogin(true);
+  
+    } catch (error) {
+      console.error("Registration failed", error.response?.data?.message || error.message);
+      //add snackbar if failed
+    }
   };
-
+  
   return (
     <Container
       maxWidth="xs"
@@ -70,7 +105,7 @@ const Auth = () => {
               </Link>
             </Box>
 
-            <Button type="submit" variant="contained" fullWidth onClick={()=>handleLogin}>
+            <Button type="submit" variant="contained" fullWidth onClick={() => handleLogin}>
               Login
             </Button>
 
@@ -110,7 +145,7 @@ const Auth = () => {
               color="text.primary"
               borderBottom={2}
             >
-              Sign Up
+              Register
             </Typography>
 
             <TextField
@@ -119,6 +154,7 @@ const Auth = () => {
               variant="outlined"
               fullWidth
               autoComplete="email"
+              onChange={hadleOnChange}
             />
             <TextField
               id="password"
@@ -127,10 +163,20 @@ const Auth = () => {
               variant="outlined"
               fullWidth
               autoComplete="current-password"
+              onChange={hadleOnChange}
+            />
+            <TextField
+              id="passwordConfirm"
+              type="password"
+              label="Confirm Password"
+              variant="outlined"
+              fullWidth
+              autoComplete="current-password"
+              onChange={hadleOnChange}
             />
 
-            <Button type="submit" variant="contained" fullWidth onClick={()=>handleRegister}>
-              Sign Up
+            <Button type="submit" variant="contained" fullWidth onClick={() => handleRegister}>
+              Register
             </Button>
 
             <Box
@@ -161,6 +207,24 @@ const Auth = () => {
           </Box>
         </form>
       )}
+
+      <Snackbar
+        anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+        open={open}
+        autoHideDuration={3000}
+        onClose={() => setOpen(false)}
+      >
+        <Alert
+          severity="error"
+          onClose={() => setOpen(false)}
+          sx={{
+            width: '100%',
+            boxShadow: 3,
+          }}
+        >
+          Passwords do not match!
+        </Alert>
+      </Snackbar>
     </Container>
   );
 };

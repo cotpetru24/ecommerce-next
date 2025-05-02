@@ -1,8 +1,7 @@
-import {
-    getProductByIdController,
-    updateProductController,
-    deleteProductController,
-  } from "@/controllers/productController";
+import { getProductByIdController,
+  updateProductController,
+  deleteProductController
+ } from "@/pages/controllers/productController";
   
   const handler = async (req, res) => {
     const { id } = req.query;

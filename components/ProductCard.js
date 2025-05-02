@@ -48,10 +48,6 @@ const ProductCard = ({ product }) => {
             size="small"
             variant="contained"
             fullWidth
-            onClick={() => {
-              cart.addToCart(product);
-              setOpen(true);
-            }}
           >
             View Product
           </Button>
