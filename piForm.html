@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        <title>Professional Indemnity</title>
+    </head>
+<body>
+    <div class="container py-5">
+        <h2 class="mb-4">Current Insurance</h2>
+        <div class="mb-3">
+          <label class="form-label">Does the firm currently hold Professional Indemnity Insurance for this class of business?</label>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="existing-insurance" id="insurance-yes" value="yes">
+            <label class="form-check-label" for="insurance-yes">Yes</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="existing-insurance" id="insurance-no" value="no">
+            <label class="form-check-label" for="insurance-no">No</label>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Current Insurer</label>
+          <input type="text" class="form-control">
+        </div>
+        <div class="row g-3">
+          <div class="col-md-6">
+            <label class="form-label">Renewal Date</label>
+            <input type="date" class="form-control">
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Date Cover Started</label>
+            <input type="date" class="form-control">
+          </div>
+        </div>
+        <div class="mb-3 mt-3">
+          <label class="form-label">Insurer Notes</label>
+          <textarea class="form-control" rows="4"></textarea>
+        </div>
+      
+        <h2 class="mt-5 mb-4">Previous Claims</h2>
+        <div class="mb-3">
+          <label class="form-label">Have any claims ever been made against the business or principals?</label>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="any-claims" id="claims-yes" value="yes">
+            <label class="form-check-label" for="claims-yes">Yes</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="any-claims" id="claims-no" value="no">
+            <label class="form-check-label" for="claims-no">No</label>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Any known circumstances that might give rise to a claim?</label>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="circumstances" id="circumstances-yes" value="yes">
+            <label class="form-check-label" for="circumstances-yes">Yes</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="circumstances" id="circumstances-no" value="no">
+            <label class="form-check-label" for="circumstances-no">No</label>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Has any proposal ever been declined, cancelled or renewal refused?</label>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="refused" id="refused-yes" value="yes">
+            <label class="form-check-label" for="refused-yes">Yes</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="refused" id="refused-no" value="no">
+            <label class="form-check-label" for="refused-no">No</label>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">If you've answered yes to any of the above, please provide full details:</label>
+          <textarea class="form-control" rows="5"></textarea>
+        </div>
+      
+        <h2 class="mt-5 mb-4">Declaration</h2>
+        <div class="mb-3">
+          <p>You have a duty to give a fair presentation of the risk to an insurer based on your reasonable understanding of the risks to your business...</p>
+          <p class="mb-1">A material circumstance is defined as:</p>
+          <ul>
+            <li>Special or unusual circumstances relating to the risk</li>
+            <li>Any particular concerns which led you to seek insurance cover for the risk</li>
+            <li>Anything which those concerned with this insurance would generally understand as material</li>
+          </ul>
+          <p>If you fail to disclose information or misrepresent any fact, this could invalidate the policy and mean that claims may not be paid in full.</p>
+        </div>
+        <div class="row g-3">
+          <div class="col-md-6">
+            <label class="form-label">Full Name</label>
+            <input type="text" class="form-control">
+          </div>
+          <div class="col-md-6 d-flex align-items-end">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="agree-terms">
+              <label class="form-check-label" for="agree-terms">
+                I confirm and agree
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+</body>
+</html>

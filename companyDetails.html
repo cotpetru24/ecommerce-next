@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <title>Business Details</title>
+</head>
+
+<body class="bg-light">
+    <div class="container py-5">
+        <h1 class="mb-4">Business Details</h1>
+        <form>
+            <!-- Business Type -->
+            <div class="mb-3">
+                <label for="busines-type" class="form-label">What are you trading as?</label>
+                <select id="busines-type" name="business-type" class="form-select">
+                    <option value="" selected disabled>Please select</option>
+                    <option value="sole-trader">Sole Trader</option>
+                    <option value="partnership">Partnership</option>
+                    <option value="limited-company">Limited Company</option>
+                </select>
+            </div>
+
+            <!-- Sole Trader Section -->
+            <div class="mb-3 hide" id="sole-trader-business-name-yes-no-div">
+                <!-- show this only for sole traders-->
+                <label class="form-label">Do you have a business name?</label>
+                <div class="form-check form-check-inline">
+                    <input type="radio" class="form-check-input" name="company-name" id="company-name-yes-yes"
+                        value="yes">
+                    <label class="form-check-label" for="company-name-yes">Yes</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input type="radio" class="form-check-input" name="company-name" id="company-name-yes-no"
+                        value="no">
+                    <label class="form-check-label" for="company-name-no">No</label>
+                </div>
+            </div>
+
+            <div class="mb-3 business-name-div hide" id="business-name-div">
+                <label for="businessName" class="form-label">Business, Company or Partnership Name</label>
+                <input type="text" id="businessName" name="businessName" class="form-control">
+            </div>
+
+            <div class="mb-3 class ">
+                <label class="form-label">Former company names?</label>
+                <div class="form-check form-check-inline">
+                    <input type="radio" class="form-check-input" name="former-company" id="former-company-yes"
+                        value="yes">
+                    <label class="form-check-label" for="former-company-yes">Yes</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input type="radio" class="form-check-input" name="former-company" id="former-company-no"
+                        value="no">
+                    <label class="form-check-label" for="former-company-no">No</label>
+                </div>
+            </div>
+
+            <div class="mb-3 hide" id="former-company-names-div">
+                <!--show only if former company names === yes-->
+                <label for="former-company-name" class="form-label">Former Company Name</label>
+                <input type="text" id="former-company-name" class="form-control mb-2">
+                <button type="button" class="btn btn-outline-primary">+ Add Company name</button>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Is the business VAT registered?</label>
+                <div class="form-check form-check-inline">
+                    <input type="radio" class="form-check-input" name="vat-registered" id="vat-yes" value="yes">
+                    <label class="form-check-label" for="vat-yes">Yes</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input type="radio" class="form-check-input" name="vat-registered" id="vat-no" value="no">
+                    <label class="form-check-label" for="vat-no">No</label>
+                </div>
+            </div>
+
+            <div class="mb-4 hide" id="vat-registration-number-div">
+                <!--show only if they select vat-registered====yes-->
+                <label for="vat-number" class="form-label">VAT Registration Number</label>
+                <input type="text" id="vat-number" class="form-control">
+            </div>
+
+            <!-- Correspondence Address -->
+            <h4 class="mt-5">Correspondence Address</h4>
+            <div class="row g-3 mb-3">
+                <div class="col-md-6">
+                    <label class="form-label">Building number/name</label>
+                    <input type="text" class="form-control">
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Street</label>
+                    <input type="text" class="form-control">
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label">City</label>
+                    <input type="text" class="form-control">
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label">County/Region</label>
+                    <input type="text" class="form-control">
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label">PostCode</label>
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+
+            <!-- Registered Office Address -->
+            <div class="mb-3">
+                <p>Do you have a registered office address? Yes / No</p>
+                <p>Is company's registered office same as correspondence address? Yes / No</p>
+                <p class="fw-bold">Show only if 'No'</p>
+                <label class="form-label">Building number/name</label>
+                <input type="text" class="form-control mb-2">
+                <label class="form-label">Street</label>
+                <input type="text" class="form-control mb-2">
+                <label class="form-label">City</label>
+                <input type="text" class="form-control mb-2">
+                <label class="form-label">County/Region</label>
+                <input type="text" class="form-control mb-2">
+                <label class="form-label">PostCode</label>
+                <input type="text" class="form-control mb-2">
+            </div>
+
+            <!-- Partnership Section -->
+            <div class="mt-4">
+                <p class="fw-bold">Show only if business-type == partnership</p>
+                <div class="mb-3">
+                    <label class="form-label">Partner Type</label>
+                    <div class="form-check">
+                        <input type="radio" class="form-check-input" name="partner-type" id="partner-individual"
+                            value="individual">
+                        <label class="form-check-label" for="partner-individual">Individual</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="radio" class="form-check-input" name="partner-type" id="partner-company"
+                            value="company">
+                        <label class="form-check-label" for="partner-company">Ltd. Company</label>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <p class="fw-bold">Show only if partner-type == company</p>
+                    <label class="form-label">Partner company name</label>
+                    <input type="text" class="form-control">
+                </div>
+
+                <div class="mb-3">
+                    <p class="fw-bold">Show only if partner-type == individual</p>
+                    <label class="form-label">Title</label>
+                    <input type="text" class="form-control mb-2">
+                    <label class="form-label">Firstname</label>
+                    <input type="text" class="form-control mb-2">
+                    <label class="form-label">Lastname</label>
+                    <input type="text" class="form-control mb-2">
+                </div>
+
+                <button type="button" class="btn btn-outline-primary">+ Add individual/company</button>
+            </div>
+
+            <!-- Limited Company Section -->
+            <div class="mt-5">
+                <p class="fw-bold">Details of all Principals, Partners or Directors (where applicable)</p>
+
+                <div class="mb-3">
+                    <label class="form-label">Role</label>
+                    <div class="form-check">
+                        <input type="radio" class="form-check-input" name="ltd-role" id="ltd-director" value="director">
+                        <label class="form-check-label" for="ltd-director">Director</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="radio" class="form-check-input" name="ltd-role" id="ltd-shareholder"
+                            value="shareholder">
+                        <label class="form-check-label" for="ltd-shareholder">Shareholder</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="radio" class="form-check-input" name="ltd-role" id="ltd-secretary"
+                            value="secretary">
+                        <label class="form-check-label" for="ltd-secretary">Secretary</label>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Title</label>
+                    <input type="text" class="form-control mb-2">
+                    <label class="form-label">Firstname</label>
+                    <input type="text" class="form-control mb-2">
+                    <label class="form-label">Lastname</label>
+                    <input type="text" class="form-control mb-2">
+                </div>
+
+                <button type="button" class="btn btn-outline-primary">+ Add</button>
+            </div>
+            <!-- 
+            <div class="mt-5">
+                <button type="submit" class="btn btn-success">Submit</button>
+            </div> -->
+
+            <div style="display: flex; justify-content: space-between; flex-grow: 1; width: 100%;">
+                <button type="submit" class="btn btn-success">Submit</button>
+
+
+            </div>
+        </form>
+        <div style="display: flex; justify-content: space-between; width: 100vw;">
+            <button type="button" class="btn btn-secondary"> <a
+                    href="E:/repo/ecommerce-next/ecommerce-next/companyDetails.html"
+                    style="text-decoration: none; color: black;">Back</button>
+
+            <button type="button" class="btn btn-secondary"> <a href="E:/repo/ecommerce-next/ecommerce-next/piForm.html"
+                    style="text-decoration: none; color: black;">Next</button>
+        </div>
+    </div>
+
+
+    <script>
+
+        const setVisibility = (elementId, visibility) => {
+            const element = document.getElementById(elementId);
+            element.classList.remove("show", "hide");
+            element.classList.add(visibility === "hide" ? "hide" : "show");
+        };
+
+        const tradingAs = document.getElementById("busines-type");
+
+        tradingAs.addEventListener("change", () => {
+            if (tradingAs.value === "sole-trader") {
+                setVisibility("sole-trader-business-name-yes-no-div", "show");
+
+                const selected = document.querySelector('input[name="company-name"]:checked');
+                if (selected?.value === "yes") {
+                    setVisibility("business-name-div", "show");
+                } else {
+                    setVisibility("business-name-div", "hide");
+                }
+            } else {
+                setVisibility("sole-trader-business-name-yes-no-div", "hide");
+                setVisibility("business-name-div", "show");
+            }
+
+        });
+
+
+
+        const businessNameRadios = document.querySelectorAll('input[name="company-name"]');
+        const businessNameDiv = document.querySelector(".business-name-div");
+
+        businessNameRadios.forEach((radio) => {
+            radio.addEventListener("change", () => {
+                if (radio.value === "yes" && radio.checked && tradingAs.value === "sole-trader") {
+                    setVisibility("business-name-div", "show");
+                } else if (radio.value === "no" && radio.checked) {
+                    setVisibility("business-name-div", "hide");
+                }
+            });
+        });
+
+
+        const formerCompaniesRadios = document.querySelectorAll('input[name="former-company"]');
+        const FormerCompanyNamesDiv = document.getElementById("former-company-names-div")
+
+        formerCompaniesRadios.forEach((radio) => {
+            radio.addEventListener("change", () => {
+                if (radio.value === "yes") {
+                    setVisibility("former-company-names-div", "show")
+                }
+                else if (radio.value === "no") {
+                    setVisibility("former-company-names-div", "hide")
+                }
+            })
+        })
+
+
+        const vatRegisteredRadios = document.querySelectorAll('input[name="vat-registered"]');
+        const vatRegistrationNumberDiv = docunemt.getElementById("vat-registration-number-div");
+
+        vatRegisteredRadios.forEach((radio) => {
+            radion.addEventListener("change", () => {
+                if (radio.value === "yes") {
+                    setVisibility("vat-registration-number-div", "show")
+                }
+                else if (radio.value === "no") {
+                    setVisibility("vat-registration-number-div", "hide")
+                }
+            })
+
+        })
+
+    </script>
+
+
+
+    <style>
+        .show {
+            display: block;
+        }
+
+        .hide {
+            display: none;
+        }
+    </style>
+</body>
+
+</html>
